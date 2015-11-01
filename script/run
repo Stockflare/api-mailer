@@ -1,0 +1,1 @@
+compose run mailer bundle exec dotenv $@
