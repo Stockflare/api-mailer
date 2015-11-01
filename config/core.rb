@@ -13,7 +13,7 @@ class Core
   self.config_dir = File.expand_path('../', __FILE__)
 
   cattr_accessor :load_paths
-  self.load_paths = %w(models lib lib/publishers controllers helpers)
+  self.load_paths = %w(models lib controllers helpers)
 
   def self.load!
     ActiveSupport::Dependencies.autoload_paths += app_load_paths
