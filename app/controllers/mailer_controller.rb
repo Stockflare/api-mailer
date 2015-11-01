@@ -1,16 +1,8 @@
 # Provider of HTTP Endpoints for the Mailer API. This Controller
 # is responsible for processing mailer requests sent via HTTP
 class MailerController < Grape::API
-  default_format :json
-
   # @!parse include OrmHelper
-  helpers OrmHelper
-
-  helpers do
-    def payload
-      @payload ||= Payload.from_params(params)
-    end
-  end
+  helpers KinesisHelper
 
   params do
     requires :template, type: String, allow_blank: false
@@ -19,7 +11,7 @@ class MailerController < Grape::API
   end
   post do
     begin
-      Publishers.publish([payload])
+      publish!
       status 201
     rescue
       status 400

@@ -1,5 +1,9 @@
 module KinesisHelper
-  # def orm
-  #   ROM.env
-  # end
+  def payload
+    @payload ||= Payload.from_params(params)
+  end
+
+  def publish!(obj = payload)
+    Publishers.publish([payload])
+  end
 end
