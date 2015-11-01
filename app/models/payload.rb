@@ -48,7 +48,7 @@ class Payload
   end
 
   values do
-    attribute :Configuration, Configuration
+    attribute :Configuration, Configuration, default: -> (*_) { Configuration.new }
     attribute :Email, Email
   end
 

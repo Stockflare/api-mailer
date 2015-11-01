@@ -13,8 +13,8 @@ class MailerController < Grape::API
     begin
       publish!
       status 201
-    rescue
-      status 400
+    # rescue
+    #   status 400
     end
   end
 end

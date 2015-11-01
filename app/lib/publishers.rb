@@ -1,3 +1,5 @@
+require 'multi_json'
+
 module Publishers
   class Kinesis
     include ValueObject
@@ -24,7 +26,7 @@ module Publishers
     end
 
     def blob(data)
-      JSON.generate data.to_h
+      MultiJson.dump data.to_h
     end
 
     private
@@ -46,8 +48,8 @@ module Publishers
     attr_accessor :current
   end
 
-  def self.publish(payload = [])
-    current.new(payload).push_all
+  def self.publish(payloads = [])
+    current.new(payloads: payloads).push_all
   end
 
   def self.<<(pub)
