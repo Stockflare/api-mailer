@@ -1,3 +1,1 @@
-FROM stockflare/base
-
-CMD ['puma']
+FROM stockflare/base:slim
