@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 group :default do
+  gem 'bigdecimal'
+
   gem 'activesupport', '~> 4.2.0'
 
   gem 'aws-sdk', '~> 2.1'
